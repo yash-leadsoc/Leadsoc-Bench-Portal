@@ -20,7 +20,7 @@
 // //             actions={<button className="btn ghost" onClick={reload}>↻ Refresh</button>} />
 // //           <div className="grid kpis">
 
-            
+
 // //             <Kpi label="Total Employees" value={k.totalEmployees} icon="👥" />
 // //             <Kpi label="Active Bench" value={k.activeBench} icon="🪑" />
 // //             {/* <Kpi label="Bench Rate" value={`${k.benchRatePct}%`} icon="％" /> */}
@@ -37,7 +37,7 @@
 // //             {/* <Kpi label="Training Completion" value={`${k.trainingCompletionPct}%`} icon="🎓" /> */}
 // //             {/* <Kpi label="Avg Assessment" value={`${k.avgAssessmentScore}%`} icon="📝" /> */}
 // //           </div>
-          
+
 // //           <div style={{ height: 22 }} />
 // //           <div className="two">
 // //             <BarCard title="Bench Aging" data={k.benchAging} />
@@ -302,8 +302,16 @@ export default function Dashboard() {
           aging[k as keyof typeof aging]++
         })
 
-        const opts = (fn: (e: any) => string) =>
-          Array.from(new Set(rows.map(fn).filter(Boolean))).sort()
+        // const opts = (fn: (e: any) => string) =>
+        //   Array.from(new Set(rows.map(fn).filter(Boolean))).sort()
+        const opts = (fn: (e: any) => string): string[] =>
+          Array.from(
+            new Set<string>(
+              rows
+                .map(fn)
+                .filter((value): value is string => Boolean(value))
+            )
+          ).sort()
         const buOpts = opts((e: any) => e.bu)
         const skillOpts = opts(primarySkill).filter(s => s !== '—')
         const statusOpts = opts((e: any) => e.status)
