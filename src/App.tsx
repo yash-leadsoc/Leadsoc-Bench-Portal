@@ -28,7 +28,7 @@ import MyAvailability from './pages/employee/MyAvailability'
 import MyProfile from './pages/employee/MyProfile'
 import Training from './pages/Training'
 import MyTrainingPlan from './pages/employee/MyTrainingPlan'
-import CtoDashboard from './pages/CtoDashboard'
+import Ctodashboard from './pages/Ctodashboard'
 import Requirements from './pages/Requirements'
 
 
@@ -58,7 +58,7 @@ export default function App() {
           </>
         ) : cto ? (
           <>
-            <Route path="/dashboard" element={<CtoDashboard />} />
+            <Route path="/dashboard" element={<Ctodashboard />} />
             <Route path="/employees" element={<Employees />} />
             <Route path="/training" element={<Training />} />
             <Route path="/requirements" element={<Requirements />} />
